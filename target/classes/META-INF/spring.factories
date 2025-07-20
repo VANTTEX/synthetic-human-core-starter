@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+ru.T1Debut.aspect.WeylandAspect,\
+ru.T1Debut.service.TaskMetrics

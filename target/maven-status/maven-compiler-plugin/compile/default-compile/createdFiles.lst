@@ -2,6 +2,7 @@ ru\T1Debut\model\Command.class
 ru\T1Debut\util\CommandTask.class
 ru\T1Debut\service\CommandService.class
 ru\T1Debut\dto\ErrorResponseDto.class
+ru\T1Debut\configuration\WeylandAuditProperties.class
 ru\T1Debut\aspect\WeylandAspect.class
 ru\T1Debut\service\TaskMetrics.class
 ru\T1Debut\model\Command$Priority.class

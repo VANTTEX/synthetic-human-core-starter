@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: bishop-prototype
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  mvc:
+    contentnegotiation:
+      favor-parameter: false
+      favor-path-extension: false
+      media-types:
+        json: application/json
+    async:
+      request-timeout: 0
+
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+thread:
+  pool:
+    core-size: 1
+    max-size: 1
+  queue:
+    capacity: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

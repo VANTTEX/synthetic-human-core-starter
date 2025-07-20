@@ -15,27 +15,23 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class ValidationHandler {
 
-    public ResponseEntity<ErrorResponseDto> handleValidationException(MethodArgumentNotValidException e){
-        String errorMessage = e.getBindingResult()
-                .getAllErrors()
-                .stream()
-                .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .collect(Collectors.joining(", "));
-
-        ErrorResponseDto error = new ErrorResponseDto(errorMessage, LocalDateTime.now().toString());
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-    }
-
     @ExceptionHandler(QueueOverflowException.class)
     public ResponseEntity<ErrorResponseDto> handleQueueOverflow(QueueOverflowException e) {
-        ErrorResponseDto error = new ErrorResponseDto(e.getMessage(), LocalDateTime.now().toString());
+        ErrorResponseDto error = new ErrorResponseDto(
+                e.getMessage(),
+                LocalDateTime.now().toString(),
+                HttpStatus.SERVICE_UNAVAILABLE.value()
+        );
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(error);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponseDto> handleAllUncaughtException() {
-        ErrorResponseDto error = new ErrorResponseDto("Внутренняя ошибка сервера", LocalDateTime.now().toString());
+    public ResponseEntity<ErrorResponseDto> handleAllException(Exception ex) {
+        ErrorResponseDto error = new ErrorResponseDto(
+                "Внутренняя ошибка сервера: " + ex.getMessage(),
+                LocalDateTime.now().toString(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value()
+        );
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
 }

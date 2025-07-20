@@ -3,11 +3,10 @@ ru\T1Debut\util\CommandTask.class
 ru\T1Debut\service\CommandService.class
 ru\T1Debut\dto\ErrorResponseDto.class
 ru\T1Debut\aspect\WeylandAspect.class
-ru\T1Debut\dto\CommandRequestDto.class
 ru\T1Debut\service\TaskMetrics.class
 ru\T1Debut\model\Command$Priority.class
 ru\T1Debut\App.class
 ru\T1Debut\annotation\WeylandWatchingYou.class
-ru\T1Debut\dto\CommandRequestDto$Priority.class
+ru\T1Debut\service\ValidationHandler.class
 ru\T1Debut\exception\QueueOverflowException.class
 ru\T1Debut\service\CommandQueue.class

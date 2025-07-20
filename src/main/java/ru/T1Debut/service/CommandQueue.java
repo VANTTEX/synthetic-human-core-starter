@@ -1,6 +1,7 @@
 package ru.T1Debut.service;
 
 import org.springframework.stereotype.Component;
+import ru.T1Debut.annotation.WeylandWatchingYou;
 import ru.T1Debut.util.CommandTask;
 import ru.T1Debut.exception.QueueOverflowException;
 
@@ -25,6 +26,7 @@ public class CommandQueue {
         );
     }
 
+    @WeylandWatchingYou
     public void submit(CommandTask task) throws QueueOverflowException {
         try {
             executor.execute(task);
